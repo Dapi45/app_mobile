@@ -1,22 +1,7 @@
-import 'package:app_mobile/app/modules/login/views/login_view.dart';
 import 'package:fancy_bottom_navigation_2/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-import 'app/routes/app_pages.dart';
-
-void main() {
-  runApp(
-    GetMaterialApp(
-      title: "Application",
-      debugShowCheckedModeBanner: false,
-      // initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes,
-      //theme: ThemeData.dark(),
-      home: MyHomePage(),
-    ),
-  );
-}
+import '../login/views/login_view.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -80,29 +65,30 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text("Tes"),
-            RaisedButton(
+            ElevatedButton(
               child: Text(
                 "Start new page",
                 style: TextStyle(color: Colors.white),
               ),
-              color: Theme.of(context).primaryColor,
               onPressed: () {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) => LoginView()));
               },
             ),
-            RaisedButton(
-              child: Text(
-                "Change to page 3",
-                style: TextStyle(color: Colors.white),
-              ),
-              color: Theme.of(context).primaryColor,
-              onPressed: () {
-                final FancyBottomNavigationState fState = bottomNavigationKey
-                    .currentState as FancyBottomNavigationState;
-                fState.setPage(2);
-              },
-            )
+            ElevatedButton(
+                child: Text(
+                  "Change to page 3",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                  final FancyBottomNavigationState fState = bottomNavigationKey
+                      .currentState as FancyBottomNavigationState;
+                  fState.setPage(2);
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.red, // background
+                  onPrimary: Colors.yellow, // foreground
+                ))
           ],
         );
       case 1:
@@ -110,12 +96,11 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text("Tes"),
-            RaisedButton(
+            ElevatedButton(
               child: Text(
                 "Start new page",
                 style: TextStyle(color: Colors.white),
               ),
-              color: Theme.of(context).primaryColor,
               onPressed: () {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) => LoginView()));
@@ -128,12 +113,11 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text("Tes"),
-            RaisedButton(
+            ElevatedButton(
               child: Text(
                 "Start new page",
                 style: TextStyle(color: Colors.white),
               ),
-              color: Theme.of(context).primaryColor,
               onPressed: () {},
             )
           ],
