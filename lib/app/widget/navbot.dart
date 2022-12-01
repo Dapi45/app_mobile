@@ -14,8 +14,8 @@ class NavBot extends StatelessWidget {
     return FancyBottomNavigation(
       tabs: [
         TabData(iconData: Icons.home, title: "Home"),
-        TabData(iconData: Icons.search, title: "Search"),
-        TabData(iconData: Icons.shopping_cart, title: "Basket")
+        TabData(iconData: Icons.build, title: "Service"),
+        TabData(iconData: Icons.person, title: "Profile")
       ],
       onTabChangedListener: (position) {
         setState(() {

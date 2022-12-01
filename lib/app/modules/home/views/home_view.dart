@@ -19,11 +19,9 @@ class HomeView extends GetView<HomeController> {
         title: const Text('PonselMart'),
         centerTitle: true,
       ),
-      bottomNavigationBar: const NavBot(),
       body: SafeArea(
         child: Row(
           children: [
-            const SizedBox(),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -42,13 +40,82 @@ class HomeView extends GetView<HomeController> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           const Text(
-                            'Anounncment',
+                            'Announcement',
                             style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 25,
-                            ),
+                                color: Colors.black,
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold),
                           ),
                         ],
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          child: Container(
+                            padding: const EdgeInsets.all(60),
+                            margin: EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                              color: Colors.yellow[600],
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          child: Container(
+                            padding: const EdgeInsets.all(60),
+                            margin: EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                              color: Colors.yellow[600],
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          child: Container(
+                            padding: const EdgeInsets.all(60),
+                            margin: EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                              color: Colors.yellow[600],
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      margin: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Colors.yellow[600],
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'Newspaper',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    child: Container(
+                      padding: const EdgeInsets.all(100),
+                      margin: EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 129, 129, 129),
+                        borderRadius: BorderRadius.circular(20),
                       ),
                     ),
                   ),
@@ -58,6 +125,7 @@ class HomeView extends GetView<HomeController> {
           ],
         ),
       ),
+      bottomNavigationBar: const NavBot(),
     );
   }
 }
