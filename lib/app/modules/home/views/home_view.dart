@@ -26,34 +26,27 @@ class HomeView extends GetView<HomeController> {
             const SizedBox(),
             Expanded(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
                     child: Container(
                       padding: const EdgeInsets.all(10),
                       margin: EdgeInsets.only(
-                        left: 100,
-                        right: 100,
                         top: 20,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.yellow,
+                        color: Color.fromARGB(255, 202, 202, 202),
                         borderRadius: BorderRadius.circular(50),
                       ),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Center(
-                            child: const Text(
-                              'Recomended',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 25,
-                              ),
+                          const Text(
+                            'Anounncment',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 25,
                             ),
-                          ),
-                          const SizedBox(
-                            height: 10,
                           ),
                         ],
                       ),
