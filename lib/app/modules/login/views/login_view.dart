@@ -55,39 +55,39 @@ class _LoginViewState extends State<LoginView> {
         ),
         SizedBox(height: 20.0),
         TextFormField(
-            autofocus: false,
-            obscureText: _obscureText,
-            keyboardType: TextInputType.text,
-            decoration: InputDecoration(
-              hintText: 'Password',
-              contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
-              suffixIcon: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    _obscureText = !_obscureText;
-                  });
-                },
-                child: Icon(
-                  _obscureText ? Icons.visibility : Icons.visibility_off,
-                  semanticLabel:
-                      _obscureText ? 'show password' : 'hide password',
-                ),
+          autofocus: false,
+          obscureText: _obscureText,
+          keyboardType: TextInputType.text,
+          decoration: InputDecoration(
+            hintText: 'Password',
+            contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
+            suffixIcon: GestureDetector(
+              onTap: () {
+                setState(() {
+                  _obscureText = !_obscureText;
+                });
+              },
+              child: Icon(
+                _obscureText ? Icons.visibility : Icons.visibility_off,
+                semanticLabel: _obscureText ? 'show password' : 'hide password',
               ),
-            )),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 16.0),
-          child: RaisedButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(24),
             ),
-            onPressed: () {},
-            padding: EdgeInsets.all(12),
-            color: Colors.yellow[600],
-            child: Text('Log In', style: TextStyle(color: Colors.black54)),
           ),
         ),
+        SizedBox(height: 15.0),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              primary: Colors.yellow[600],
+              padding: EdgeInsets.all(20),
+              shape: RoundedRectangleBorder(
+                  //to set border radius to button
+                  borderRadius: BorderRadius.circular(30))),
+          onPressed: () {},
+          child: Text('Log In', style: TextStyle(color: Colors.black54)),
+        ),
+        SizedBox(height: 10.0),
         TextButton(
           child: Text(
             'Forgot password?',
@@ -109,7 +109,7 @@ class _LoginViewState extends State<LoginView> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text('Please enter your eEmail'),
+            title: const Text('Please enter your Email'),
             contentPadding: EdgeInsets.all(5.0),
             content: TextField(
               decoration: InputDecoration(hintText: "Email"),
