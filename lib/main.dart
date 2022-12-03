@@ -3,6 +3,8 @@ import 'package:fancy_bottom_navigation_2/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'app/modules/home/views/home_view.dart';
+import 'app/modules/widget/widget.dart';
 import 'app/routes/app_pages.dart';
 
 void main() {
@@ -10,134 +12,20 @@ void main() {
     GetMaterialApp(
       title: "Application",
       debugShowCheckedModeBanner: false,
-      // initialRoute: AppPages.INITIAL,
+      //initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
-      //theme: ThemeData.dark(),
-      home: MyHomePage(),
+      theme: ThemeData.dark(),
+      home: navigation(),
     ),
   );
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int currentPage = 0;
-
-  GlobalKey bottomNavigationKey = GlobalKey();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("App Name"),
-      ),
-      body: Container(
-        // decoration: BoxDecoration(color: Colors.white),
-        child: Center(
-          child: _getPage(currentPage),
-        ),
-      ),
-      bottomNavigationBar: FancyBottomNavigation(
-        tabs: [
-          TabData(
-              iconData: Icons.home,
-              title: "Home",
-              onclick: () {
-                final FancyBottomNavigationState fState = bottomNavigationKey
-                    .currentState as FancyBottomNavigationState;
-                fState.setPage(2);
-              }),
-          TabData(
-              iconData: Icons.home_repair_service,
-              title: "Service",
-              onclick: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => LoginView()))),
-          TabData(iconData: Icons.person, title: "Profile"),
-        ],
-        initialSelection: 0,
-        key: bottomNavigationKey,
-        onTabChangedListener: (position) {
-          setState(() {
-            currentPage = position;
-          });
-        },
-      ),
-      drawer: Drawer(
-        child: ListView(
-          children: <Widget>[Text("Cek"), Text("1 2 3")],
-        ),
-      ),
-    );
-  }
-
   _getPage(int page) {
     switch (page) {
       case 0:
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Text("Tes"),
-            RaisedButton(
-              child: Text(
-                "Start new page",
-                style: TextStyle(color: Colors.white),
-              ),
-              color: Theme.of(context).primaryColor,
-              onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => LoginView()));
-              },
-            ),
-            RaisedButton(
-              child: Text(
-                "Change to page 3",
-                style: TextStyle(color: Colors.white),
-              ),
-              color: Theme.of(context).primaryColor,
-              onPressed: () {
-                final FancyBottomNavigationState fState = bottomNavigationKey
-                    .currentState as FancyBottomNavigationState;
-                fState.setPage(2);
-              },
-            )
-          ],
-        );
+        return HomeView();
       case 1:
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Text("Tes"),
-            RaisedButton(
-              child: Text(
-                "Start new page",
-                style: TextStyle(color: Colors.white),
-              ),
-              color: Theme.of(context).primaryColor,
-              onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => LoginView()));
-              },
-            )
-          ],
-        );
+        return HomeView();
       default:
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Text("Tes"),
-            RaisedButton(
-              child: Text(
-                "Start new page",
-                style: TextStyle(color: Colors.white),
-              ),
-              color: Theme.of(context).primaryColor,
-              onPressed: () {},
-            )
-          ],
-        );
+        return HomeView();
     }
   }
 }
