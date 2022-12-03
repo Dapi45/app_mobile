@@ -1,101 +1,130 @@
 import 'package:flutter/material.dart';
 
-import 'package:get/get.dart';
+class LoginView extends StatefulWidget {
+  static String tag = 'login-page';
 
-import '../../../routes/app_pages.dart';
-import '../controllers/login_controller.dart';
+  @override
+  State<StatefulWidget> createState() {
+    return _LoginViewState();
+  }
+}
 
-class LoginView extends GetView<LoginController> {
-  const LoginView({Key? key}) : super(key: key);
+class _LoginViewState extends State<LoginView> {
+  GlobalKey<FormState> _key = GlobalKey();
+  bool _validate = false;
+
+  bool _obscureText = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blue[100],
-        body: Container(
-          margin: context.isPhone
-              ? EdgeInsets.all(Get.width * 0.1)
-              : EdgeInsets.all(Get.height * 0.1),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50), color: Colors.white),
-          child: Row(
-            children: [
-              // bagian biru
-              !context.isPhone
-                  ? Expanded(
-                      child: Container(
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(50),
-                            bottomLeft: Radius.circular(50)),
-                        color: Colors.blue,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(30.0),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Text(
-                                'Welcome',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 70),
-                              ),
-                              Text(
-                                'Please Sign In',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 30),
-                              ),
-                              Text(
-                                'Start Journey With Us',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20),
-                              ),
-                            ]),
-                      ),
-                    ))
-                  : const SizedBox(),
-              // bagian putih
-              Expanded(
-                child: Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(50),
-                        bottomRight: Radius.circular(50)),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      context.isPhone
-                          ? Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                  Text(
-                                    'Welcome',
-                                    style: TextStyle(
-                                        color: Colors.grey, fontSize: 40),
-                                  ),
-                                  Text(
-                                    'Please Sign In',
-                                    style: TextStyle(
-                                        color: Colors.grey, fontSize: 20),
-                                  ),
-                                  Text(
-                                    'Start Journey With Us',
-                                    style: TextStyle(
-                                        color: Colors.grey, fontSize: 15),
-                                  ),
-                                ])
-                          : const SizedBox(),
-                      FloatingActionButton.extended(
-                        onPressed: () => Get.toNamed(Routes.HOME),
-                        label: const Text('Sign In With Google'),
-                      )
-                    ],
-                  ),
-                ),
-              )
-            ],
+      body: Center(
+        child: SingleChildScrollView(
+          child: Container(
+            margin: EdgeInsets.all(20.0),
+            child: Center(
+              child: Form(
+                key: _key,
+                child: _getFormUI(),
+              ),
+            ),
           ),
-        ));
+        ),
+      ),
+    );
+  }
+
+  Widget _getFormUI() {
+    return Column(
+      children: <Widget>[
+        Icon(
+          Icons.person,
+          color: Colors.yellow[600],
+          size: 100.0,
+        ),
+        SizedBox(height: 50.0),
+        TextFormField(
+          keyboardType: TextInputType.emailAddress,
+          autofocus: false,
+          decoration: InputDecoration(
+            hintText: 'Email',
+            contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
+          ),
+        ),
+        SizedBox(height: 20.0),
+        TextFormField(
+            autofocus: false,
+            obscureText: _obscureText,
+            keyboardType: TextInputType.text,
+            decoration: InputDecoration(
+              hintText: 'Password',
+              contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
+              suffixIcon: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _obscureText = !_obscureText;
+                  });
+                },
+                child: Icon(
+                  _obscureText ? Icons.visibility : Icons.visibility_off,
+                  semanticLabel:
+                      _obscureText ? 'show password' : 'hide password',
+                ),
+              ),
+            )),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 16.0),
+          child: RaisedButton(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(24),
+            ),
+            onPressed: () {},
+            padding: EdgeInsets.all(12),
+            color: Colors.yellow[600],
+            child: Text('Log In', style: TextStyle(color: Colors.black54)),
+          ),
+        ),
+        TextButton(
+          child: Text(
+            'Forgot password?',
+            style: TextStyle(color: Colors.white),
+          ),
+          onPressed: _showForgotPasswordDialog,
+        ),
+        TextButton(
+          onPressed: () {},
+          child: Text('Not a member? Sign up now',
+              style: TextStyle(color: Colors.white)),
+        ),
+      ],
+    );
+  }
+
+  Future<Null> _showForgotPasswordDialog() async {
+    await showDialog<String>(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Please enter your eEmail'),
+            contentPadding: EdgeInsets.all(5.0),
+            content: TextField(
+              decoration: InputDecoration(hintText: "Email"),
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: Text("Ok"),
+                onPressed: () {},
+              ),
+              TextButton(
+                child: Text("Cancel"),
+                onPressed: () => Navigator.pop(context),
+              ),
+            ],
+          );
+        });
   }
 }
