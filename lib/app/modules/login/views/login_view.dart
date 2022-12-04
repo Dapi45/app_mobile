@@ -114,7 +114,9 @@ class _LoginViewState extends State<LoginView> {
           onPressed: _showForgotPasswordDialog,
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.toNamed(Routes.SIGNUP);
+          },
           child: Text('Not a member? Sign up now',
               style: TextStyle(color: Colors.black)),
         ),
