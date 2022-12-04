@@ -1,4 +1,6 @@
+import 'package:app_mobile/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class LoginView extends StatefulWidget {
   static String tag = 'login-page';
@@ -37,10 +39,24 @@ class _LoginViewState extends State<LoginView> {
   Widget _getFormUI() {
     return Column(
       children: <Widget>[
+        Text(
+          'PonselMart',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 50,
+          ),
+        ),
         Icon(
           Icons.person,
           color: Colors.yellow[600],
           size: 100.0,
+        ),
+        Text(
+          'Admin Login',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+          ),
         ),
         SizedBox(height: 50.0),
         TextFormField(
@@ -83,22 +99,24 @@ class _LoginViewState extends State<LoginView> {
               padding: EdgeInsets.all(20),
               shape: RoundedRectangleBorder(
                   //to set border radius to button
-                  borderRadius: BorderRadius.circular(30))),
-          onPressed: () {},
-          child: Text('Log In', style: TextStyle(color: Colors.black54)),
+                  borderRadius: BorderRadius.circular(32.0))),
+          onPressed: () {
+            Get.toNamed(Routes.DASHBOARD);
+          },
+          child: Text('Sign In', style: TextStyle(color: Colors.black54)),
         ),
         SizedBox(height: 10.0),
         TextButton(
           child: Text(
             'Forgot password?',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.black),
           ),
           onPressed: _showForgotPasswordDialog,
         ),
         TextButton(
           onPressed: () {},
           child: Text('Not a member? Sign up now',
-              style: TextStyle(color: Colors.white)),
+              style: TextStyle(color: Colors.black)),
         ),
       ],
     );

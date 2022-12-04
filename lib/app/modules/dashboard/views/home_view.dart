@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 import '../../../routes/app_pages.dart';
 import '../../../widget/navbot.dart';
-import '../controllers/home_controller.dart';
+import '../../home/controllers/home_controller.dart';
 
 int currentPage = 0;
 
@@ -125,7 +125,7 @@ class HomeView extends GetView<HomeController> {
           ],
         ),
       ),
-      bottomNavigationBar: const NavBot(),
+      // bottomNavigationBar: const NavBot(),
     );
   }
 }
