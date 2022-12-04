@@ -16,116 +16,98 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('PonselMart'),
+        title: const Text('PonselMart', style: TextStyle(color: Colors.black)),
         centerTitle: true,
+        backgroundColor: Colors.white,
       ),
-      body: SafeArea(
-        child: Row(
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    child: Container(
-                      padding: const EdgeInsets.all(10),
-                      margin: EdgeInsets.only(
-                        top: 20,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 202, 202, 202),
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Text(
-                            'Announcement',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          child: Container(
-                            padding: const EdgeInsets.all(60),
-                            margin: EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                              color: Colors.yellow[600],
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
+      body: ListView(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        margin: EdgeInsets.only(
+                          top: 20,
                         ),
-                        SizedBox(
-                          child: Container(
-                            padding: const EdgeInsets.all(60),
-                            margin: EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                              color: Colors.yellow[600],
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 202, 202, 202),
+                          borderRadius: BorderRadius.circular(50),
                         ),
-                        SizedBox(
-                          child: Container(
-                            padding: const EdgeInsets.all(60),
-                            margin: EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                              color: Colors.yellow[600],
-                              borderRadius: BorderRadius.circular(20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const Text(
+                              'Announcement',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold),
                             ),
-                          ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    child: Container(
-                      padding: const EdgeInsets.all(10),
-                      margin: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: Colors.yellow[600],
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Text(
-                            'Newspaper',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    child: Container(
-                      padding: const EdgeInsets.all(100),
-                      margin: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 129, 129, 129),
-                        borderRadius: BorderRadius.circular(20),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                        child: Center(
+                      child: SizedBox(
+                        height: 120,
+                        child: ListView.builder(
+                            itemExtent: 280,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) => Container(
+                                  margin: EdgeInsets.all(10),
+                                  color: Colors.yellow[600],
+                                ),
+                            itemCount: 10),
+                      ),
+                    )),
+                    SizedBox(
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        margin: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: Colors.yellow[600],
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const Text(
+                              'Newspaper',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      child: Container(
+                        padding: const EdgeInsets.all(220),
+                        margin: EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 129, 129, 129),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
+            ],
+          ),
+        ],
       ),
-      // bottomNavigationBar: const NavBot(),
     );
   }
 }
